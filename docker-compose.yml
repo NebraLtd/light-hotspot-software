@@ -8,6 +8,37 @@ services:
     volumes:
       - 'pktfwdr:/var/pktfwd'
 
+  diagnostics:
+    image: "nebraltd/hm-diag:70580d4089082eb583c2985b6cce6e50d4e4f12a"
+    volumes:
+      - 'pktfwdr:/var/pktfwd'
+      - 'miner-storage:/var/data'
+    ports:
+      - '80:80'
+    cap_add:
+      - SYS_RAWIO
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    labels:
+      io.balena.features.sysfs: '1'
+
+  gateway-config:
+    image: "nebraltd/hm-config:54702aaeff6dc3f94e8c5595413826376ef72a34"
+    privileged: true
+    network_mode: "host"
+    cap_add:
+            - NET_ADMIN
+    volumes:
+      - 'miner-storage:/var/data'
+    environment:
+      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
+    labels:
+      io.balena.features.dbus: '1'
+      io.balena.features.sysfs: '1'
+      io.balena.features.kernel-modules: '1'
+      io.balena.features.supervisor-api: '1'
+    stop_signal: SIGINT
+
 volumes:
   miner-storage:
   miner-log:
