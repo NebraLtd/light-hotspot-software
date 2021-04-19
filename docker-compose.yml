@@ -22,6 +22,9 @@ services:
     labels:
       io.balena.features.sysfs: '1'
 
+  gateway-rs:
+    image: "nebraltd/hm-gatewayrs:23462b89b25cd7aaa39885e772fd18e13a746b77"
+
   gateway-config:
     image: "nebraltd/hm-config:6232d0ab810199c09dec16db786cbc5a9b899efd"
     privileged: true
