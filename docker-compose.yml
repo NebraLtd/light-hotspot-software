@@ -26,7 +26,7 @@ services:
     image: "nebraltd/hm-gatewayrs:a220f0e6a6893372993c9a9f4575eb170ed28af0"
 
   gateway-config:
-    image: "nebraltd/hm-config:94994dc666e93344afd3f0507d0eeae62155c9fb"
+    image: "nebraltd/hm-config:35d36ab43371e703fc78ec34892d5e56b9d70b37"
     privileged: true
     network_mode: "host"
     cap_add:
