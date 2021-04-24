@@ -1,0 +1,63 @@
+version: '2'
+
+services:
+
+  packet-forwarder:
+    image: "nebraltd/hm-pktfwd:b9a6738bcc7f5ab1699334220cc6756cd6ec1bcd"
+    privileged: true
+    volumes:
+      - 'pktfwdr:/var/pktfwd'
+
+  diagnostics:
+    image: "nebraltd/hm-diag:ad01b46cce98b75cf43be3c800981d9de07c9b2d"
+    volumes:
+      - 'pktfwdr:/var/pktfwd'
+      - 'miner-storage:/var/data'
+    ports:
+      - '80:80'
+    cap_add:
+      - SYS_RAWIO
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    labels:
+      io.balena.features.sysfs: '1'
+
+  gateway-rs:
+    image: "nebraltd/hm-gatewayrs:b826e5cc45804600b672dd9fc75fe5bbed2031ee"
+
+  gateway-config:
+    image: "nebraltd/hm-config:35d36ab43371e703fc78ec34892d5e56b9d70b37"
+    privileged: true
+    network_mode: "host"
+    cap_add:
+            - NET_ADMIN
+    volumes:
+      - 'miner-storage:/var/data'
+    environment:
+      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
+    labels:
+      io.balena.features.dbus: '1'
+      io.balena.features.sysfs: '1'
+      io.balena.features.kernel-modules: '1'
+      io.balena.features.supervisor-api: '1'
+    stop_signal: SIGINT
+
+  gwmfr:
+    image: "nebraltd/hm-gwmfr:68329fce90fa6ba5169c700d763fe941b7e414f4"
+    cap_add:
+      - SYS_RAWIO
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    restart: on-failure
+
+  upnp:
+    image: "nebraltd/hm-upnp:64a5b7ba81b3ab7de37dc5dcd3f7d025a34b3410"
+    network_mode: "host"
+    restart: on-failure
+    volumes:
+      - 'pktfwdr:/var/pktfwd'
+
+volumes:
+  miner-storage:
+  miner-log:
+  pktfwdr:
