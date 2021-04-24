@@ -31,9 +31,9 @@ vendor "Nebra LTD"
 product "Nebra Light Hotspot MC"
 
 # Custom binary data
-custom_data
-c0ffee
-end
+# custom_data
+# c0ffee
+# end
 
 ########################################################################
 # GPIO bank settings, set to nonzero to change from the default.
