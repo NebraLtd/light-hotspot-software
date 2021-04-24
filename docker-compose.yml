@@ -23,7 +23,7 @@ services:
       io.balena.features.sysfs: '1'
 
   gateway-rs:
-    image: "nebraltd/hm-gatewayrs:d4189187c1009fc7707738d365d551665f7bfd0d"
+    image: "nebraltd/hm-gatewayrs:b826e5cc45804600b672dd9fc75fe5bbed2031ee"
 
   gateway-config:
     image: "nebraltd/hm-config:35d36ab43371e703fc78ec34892d5e56b9d70b37"
