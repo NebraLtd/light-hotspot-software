@@ -22,7 +22,7 @@ services:
     labels:
       io.balena.features.sysfs: '1'
 
-  gateway-rs:
+  helium:
     image: "nebraltd/hm-gatewayrs:b826e5cc45804600b672dd9fc75fe5bbed2031ee"
 
   gateway-config:
