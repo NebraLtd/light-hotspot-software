@@ -2,6 +2,10 @@
 
 This repository contains the dockerfile that can configure a Hotspot running Balena to act as a Helium Light Hotspot.
 
+## Getting Started
+
+[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/NebraLtd/light-hotspot-software)
+
 ## Mining Notice
 
 Currently light hotspots are unable to earn HNT, this is currently intended for development purposes and for those who wish to run just a packetforwarder compatible with the Helium Network.
