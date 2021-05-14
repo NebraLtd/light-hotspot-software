@@ -1,7 +1,7 @@
 name: "Nebra Helium Light"
 type: sw.application
 description: >-
-  Manage your Helium Light Gateway remotely using balenaCloud. 
+  Manage your Helium Light Gateway remotely using balenaCloud.
 fleetcta: Internet all the things!
 post-provisioning: >-
   ## Usage instructions
@@ -18,8 +18,14 @@ assets:
     type: blob.asset
     data:
       url: "https://cdn.shopify.com/s/files/1/0071/2281/3001/files/Nebra-Icon-Blue_bb758eaa-b10d-4ea6-a55e-babd69135b69.png?v=1620938774"
-data: 
+data:
   defaultDeviceType: raspberry-pi
+  applicationConfigVariables:
+    - RESIN_HOST_CONFIG_core_freq: 400
+  applicationEnvrionmentVariables:
+    - VARIANT: ''
+    - REGION_OVERRIDE: ''
+    - FREQ: ''
   supportedDeviceTypes:
     - raspberry-pi
     - raspberry-pi2
