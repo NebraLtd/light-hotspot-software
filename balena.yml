@@ -8,7 +8,7 @@ post-provisioning: >-
   Once your device joins the fleet you'll need to allow some time for it to
   download the application and start forwarding packets to the Helium Network.
   For detailed instructions on how to use Nebra Helium Light check out
-  [our guides](https://helium.nebra.com).
+  https://github.com/nebraltd/light-hotspot-software/#nebra-light-helium-hotspot-software.
 assets:
   repository:
     type: blob.asset
