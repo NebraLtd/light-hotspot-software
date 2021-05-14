@@ -5,6 +5,7 @@ description: >-
 fleetcta: Internet all the things!
 post-provisioning: >-
   ## Usage instructions
+
   Once your device joins the fleet you'll need to allow some time for it to
   download the application and start forwarding packets to the Helium Network.
   For detailed instructions on how to use Nebra Helium Light check out
@@ -42,4 +43,4 @@ data:
     - beaglebone-green-gateway
     - beaglebone-pocket
     - odroid-c1
-version: 0.0.1
+version: 0.0.2
