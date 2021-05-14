@@ -23,9 +23,9 @@ data:
   applicationConfigVariables:
     - RESIN_HOST_CONFIG_core_freq: 400
   applicationEnvrionmentVariables:
-    - VARIANT: ''
-    - REGION_OVERRIDE: ''
-    - FREQ: ''
+    - VARIANT: 'DIY-PISLGH'
+    - REGION_OVERRIDE: 'EU868'
+    - FREQ: '868'
   supportedDeviceTypes:
     - raspberry-pi
     - raspberry-pi2
