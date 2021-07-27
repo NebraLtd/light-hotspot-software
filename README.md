@@ -2,8 +2,6 @@
 
 This repository contains the dockerfile that can configure a Hotspot running Balena to act as a Helium Light Hotspot.
 
-<img src='https://jenkins.ryanteck.uk/buildStatus/icon?job=Helium-Guides+Download'>
-
 ## Getting Started
 You can either get going by doing the following.
 
