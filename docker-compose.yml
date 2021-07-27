@@ -9,7 +9,7 @@ services:
       - 'pktfwdr:/var/pktfwd'
 
   helium-miner:
-    image: "nebraltd/hm-gatewayrs:0e3dc37826c3866d2d34d3e1b7d09e7e9858c7bf"
+    image: "nebraltd/hm-gatewayrs:28c08e2c6d21bcc628cbf0415e4c1d155f9fa192"
 
 
 volumes:
