@@ -25,6 +25,13 @@ The Light Hotspot software requires the following variables to be set in Balena'
 
 **FREQ** : Optional but ideal, this variable should be set to the frequency of the Radio module for easy identification.
 
+## Device Configuration / Fleet Configuration
+
+For some Nebra Hotspots that use spidev1.2 you may need to add a DT overlay in the device or fleet configuration section on balenaCloud to enable spi1.
+
+Additionally, for the SPI ethernet based Nebra Light Hotspot you need to add the DT overlay for the enc28j60.
+
+To do this you need to find the "Define DT Overlays" section, click activate and then add `"enc28j60","spi1-3cs"`
 
 ## Mining Notice
 
