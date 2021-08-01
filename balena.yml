@@ -46,4 +46,4 @@ data:
     - beaglebone-green-gateway
     - beaglebone-pocket
     - odroid-c1
-version: 0.0.3
+version: 0.0.4

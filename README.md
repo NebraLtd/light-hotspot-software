@@ -3,12 +3,12 @@
 This repository contains the dockerfile that can configure a Hotspot running Balena to act as a Helium Light Hotspot.
 
 ## Getting Started
-You can either get going by doing the following.
+You can get going by doing either of the following...
 
 ### Balena Open Fleets
-Download an image powered by Balena Open Fleets, as we push out updates your system should automatically update.
+Download an image powered by Balena Open Fleets. As we push out updates your system should automatically update.
 
-https://hub.balena.io/nebraltd/helium-light-hotspot
+[Deploy with Balena Open Fleets](https://hub.balena.io/nebraltd/helium-light-hotspot)
 
 ### Balena Deploy
 Alternatively you can click the button below to create your own Balena Application with the code ready to go.
@@ -19,11 +19,11 @@ Alternatively you can click the button below to create your own Balena Applicati
 
 The Light Hotspot software requires the following variables to be set in Balena's Device or Fleet Variables.
 
-**VARIANT** : The ENV Identifier from the list of hardware supported at https://github.com/NebraLtd/helium-hardware-definitions . **This is required**
+**VARIANT** : The ENV Identifier from the list of hardware supported on our [hardware definitions repo](https://github.com/NebraLtd/helium-hardware-definitions). **This is required**
 
-**REGION_OVERRIDE** : Overrides for the specific region plan you wish to use. A list can be found at https://github.com/NebraLtd/hm-pktfwd/blob/variant-handler/README.md . **Currently required**
+**REGION_OVERRIDE** : Override for the specific region plan you wish to use. A list can be found on our [packet forwarder repo](https://github.com/NebraLtd/hm-pktfwd). **Currently required**
 
-**FREQ** : Optional but ideal, this variable should be set to the frequency of the Radio module for easy identification.
+**FREQ** : Optional but ideal, this variable should be set to the frequency of the radio module for easy identification.
 
 ## Device Configuration / Fleet Configuration
 
@@ -35,14 +35,14 @@ To do this you need to find the "Define DT Overlays" section, click activate and
 
 ## Mining Notice
 
-Currently light hotspots are unable to earn HNT, this is currently intended for development purposes and for those who wish to run just a packetforwarder compatible with the Helium Network.
+Currently light hotspots are unable to earn HNT, this is currently intended for development purposes and for those who wish to run just a packet forwarder compatible with the Helium Network.
 
-Even when Light Hotspots are able to earn HNT this would only be possible with a hotspot from an approved manufacturer. DIY Hotspots will not be able to earn HNT in the future.
+Even when Light Hotspots are able to earn HNT this would only be possible with a hotspot from an approved manufacturer. DIY Hotspots will not be able to earn HNT in the future for proof of coverage (PoC) but only for data transfer.
 
-Full Details of the helium roadmap can be found at https://docs.helium.com/mine-hnt/light-hotspots
+Full Details of the Helium light hotspot roadmap can be found on the [Helium docs site](https://docs.helium.com/use-the-network/light-hotspots/)
 
 ## Hardware Support
 
 The Nebra Light Hotspot Software has been written to support multiple variants of hardware, both to be compatible with all of Nebra's hotspots but also some alternatives & DIY solutions.
 
-The file and information of multiple hardware support can be found at https://github.com/NebraLtd/helium-hardware-definitions
+The file and information of multiple hardware support can be found on our [hardware definitions repo](https://github.com/NebraLtd/helium-hardware-definitions).
