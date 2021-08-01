@@ -21,7 +21,7 @@ The Light Hotspot software requires the following variables to be set in Balena'
 
 **VARIANT** : The ENV Identifier from the list of hardware supported at https://github.com/NebraLtd/helium-hardware-definitions . **This is required**
 
-**REGION_OVERRIDE** : Overrides for the specific region plan you wish to use. A list can be found at https://github.com/NebraLtd/hm-pktfwd/blob/variant-handler/README.md . **Currently requied**
+**REGION_OVERRIDE** : Overrides for the specific region plan you wish to use. A list can be found at https://github.com/NebraLtd/hm-pktfwd/blob/variant-handler/README.md . **Currently required**
 
 **FREQ** : Optional but ideal, this variable should be set to the frequency of the Radio module for easy identification.
 
