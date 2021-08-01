@@ -19,9 +19,9 @@ Alternatively you can click the button below to create your own Balena Applicati
 
 The Light Hotspot software requires the following variables to be set in Balena's Device or Fleet Variables.
 
-**VARIANT** : The ENV Identifier from the list of hardware supported on our [hardware definitions repo](https://github.com/NebraLtd/helium-hardware-definitions). **This is required**
+**VARIANT** : The ENV Identifier from the list of hardware supported on our [hardware definitions repo](https://github.com/NebraLtd/helium-hardware-definitions). **This is required**.
 
-**REGION_OVERRIDE** : Override for the specific region plan you wish to use. A list can be found on our [packet forwarder repo](https://github.com/NebraLtd/hm-pktfwd). **Currently required**
+**REGION_OVERRIDE** : Override for the specific region plan you wish to use. A list can be found on our [packet forwarder repo](https://github.com/NebraLtd/hm-pktfwd). **Currently required**.
 
 **FREQ** : Optional but ideal, this variable should be set to the frequency of the radio module for easy identification.
 
@@ -39,7 +39,7 @@ Currently light hotspots are unable to earn HNT, this is currently intended for 
 
 Even when Light Hotspots are able to earn HNT this would only be possible with a hotspot from an approved manufacturer. DIY Hotspots will not be able to earn HNT in the future for proof of coverage (PoC) but only for data transfer.
 
-Full Details of the Helium light hotspot roadmap can be found on the [Helium docs site](https://docs.helium.com/use-the-network/light-hotspots/)
+Full Details of the Helium light hotspot roadmap can be found on the [Helium docs site](https://docs.helium.com/use-the-network/light-hotspots/).
 
 ## Hardware Support
 
