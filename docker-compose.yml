@@ -3,7 +3,7 @@ version: '2'
 services:
 
   packet-forwarder:
-    image: "nebraltd/hm-pktfwd:377fb5f215ce0ff6d63c4c4a1bff24bfa2d957d9"
+    image: "nebraltd/hm-pktfwd:52b8dc884557ac0b04e109ed415ad7bd5fd65a8f"
     privileged: true
     volumes:
       - 'pktfwdr:/var/pktfwd'
