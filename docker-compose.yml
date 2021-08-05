@@ -27,6 +27,13 @@ services:
     labels:
       io.balena.features.dbus: '1'
 
+  upnp:
+    image: "nebraltd/hm-upnp:a25dbac8f42b256e9551fafc924b06f5f51ebf32"
+    network_mode: "host"
+    restart: on-failure
+    volumes:
+      - 'pktfwdr:/var/pktfwd'
+      
 volumes:
   miner-storage:
   miner-log:
