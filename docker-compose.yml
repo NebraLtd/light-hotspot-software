@@ -27,6 +27,14 @@ services:
     labels:
       io.balena.features.dbus: '1'
 
+  gwmfr:
+    image: "nebraltd/hm-gwmfr:15942b6ce4bed46ff4a0544cb7d26529ea90c922"
+    cap_add:
+      - SYS_RAWIO
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    restart: on-failure
+
   upnp:
     image: "nebraltd/hm-upnp:a25dbac8f42b256e9551fafc924b06f5f51ebf32"
     network_mode: "host"
