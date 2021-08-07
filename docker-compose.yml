@@ -33,7 +33,7 @@ services:
       - "1680:1680/udp"
     volumes:
       - 'miner-storage:/var/data'
-      - 'miner-log:/var/log/'
+      - 'miner-log:/var/log/miner'
       - 'pktfwdr:/var/pktfwd'
     cap_add:
       - SYS_RAWIO
@@ -64,7 +64,7 @@ services:
       io.balena.features.dbus: '1'
 
   gwmfr:
-    image: "nebraltd/hm-gwmfr:f25f620d9220fdf1114054fc2bf6950aa27e8cd3"
+    image: "nebraltd/hm-gwmfr:b112d5490bbb551d20d98dea3f3c4630c82eab5f"
     cap_add:
       - SYS_RAWIO
     devices:
