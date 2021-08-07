@@ -33,7 +33,7 @@ services:
       - "1680:1680/udp"
     volumes:
       - 'miner-storage:/var/data'
-      - 'miner-log:/var/log/miner'
+      - 'miner-log:/var/log/'
       - 'pktfwdr:/var/pktfwd'
     cap_add:
       - SYS_RAWIO
