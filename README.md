@@ -1,6 +1,10 @@
 # Nebra Light Helium Hotspot Software
 
-This repository contains the dockerfile that can configure a Hotspot running Balena to act as a Helium Light Hotspot.
+This repository includes the main [docker-compose.yml](https://github.com/NebraLtd/light-hotspot-software/blob/master/docker-compose.yml) file that powers the Nebra light hotspots as well as a variety of other hardware versions (see the [hardware support](#hardware-support) section below for more details).
+
+The `docker-compose.yml` file is pushed to [Balena](https://www.balena.io/) (using GitHub Actions), which in turn pulls down the various Docker images outlined below.
+
+There are currently six different services running within this device, which are all outlined below in the [containers](#containers) section.
 
 ## Getting Started
 You can get going by doing either of the following...
@@ -24,6 +28,46 @@ The Light Hotspot software requires the following variables to be set in Balena'
 **REGION_OVERRIDE** : Override for the specific region plan you wish to use. A list can be found on our [packet forwarder repo](https://github.com/NebraLtd/hm-pktfwd). **Currently required**.
 
 **FREQ** : Optional but ideal, this variable should be set to the frequency of the radio module for easy identification.
+
+## Containers
+
+### Diagnostics
+
+Repo: [github.com/NebraLtd/hm-diag](https://github.com/NebraLtd/hm-diag)
+
+The diagnostics container is designed for local troubleshooting. It runs a local web server that displays various diagnostics data.
+
+Note that this container is also responsible for serving content to the [Hotspot-Production-Tool](https://github.com/NebraLtd/Hotspot-Production-Tool).
+
+### Packet Forwarder
+
+Repo: [github.com/NebraLtd/hm-pktfwd](https://github.com/NebraLtd/hm-pktfwd)
+
+This container is responsible for configuring packet forwarder's region and starts the radio module.
+
+### Gateway Config
+
+Repo: [github.com/NebraLtd/hm-config](https://github.com/NebraLtd/hm-config)
+
+This container is (partially) responsible for the device onboarding and provides the Bluetooth LE to allow the hotspot to be configured via the Helium App. It is also responsible for configuring WiFi.
+
+### Gateway RS (Light Hotspot Gateway/Miner)
+
+Repo: [github.com/NebraLtd/hm-gatewayrs](https://github.com/NebraLtd/hm-gatewayrs)
+
+This container is the actual Helium Gateway RS software (from upstream), with the required configuration files added.
+
+### gwmfr
+
+Repo: [github.com/NebraLtd/hm-gwmfr](https://github.com/NebraLtd/hm-gwmfr)
+
+This software contains the tool which configures the ECC Key in production and isn't run again after.
+
+### UPnP
+
+Repo: [github.com/NebraLtd/hm-upnp](https://github.com/NebraLtd/hm-upnp)
+
+This container attempts to use UPnP to set up a port forwarding rule, if your router supports it and the function is turned on in your router settings.
 
 ## Device Configuration / Fleet Configuration
 
