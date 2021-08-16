@@ -21,7 +21,7 @@ services:
     stop_signal: SIGINT
 
   packet-forwarder:
-    image: "nebraltd/hm-pktfwd:2e4d8adddc55320796b22a5d2bb2cad43728d2be"
+    image: "nebraltd/hm-pktfwd:ea1958bf72d744556f76d80cf283a0789238c6e5"
     privileged: true
     volumes:
       - 'pktfwdr:/var/pktfwd'
@@ -46,7 +46,7 @@ services:
       io.balena.features.dbus: '1'
 
   diagnostics:
-    image: "nebraltd/hm-diag:d64ae5d50fd01260cfffb9042c56292274eb59d6"
+    image: "nebraltd/hm-diag:56d3856fa165b1d1bae76bae4a8efaae50b2496e"
     environment:
       - 'FIRMWARE_VERSION=2021.08.02.1_LIGHT'
       - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
