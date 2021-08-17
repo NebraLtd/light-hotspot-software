@@ -46,7 +46,7 @@ services:
       io.balena.features.dbus: '1'
 
   diagnostics:
-    image: "nebraltd/hm-diag:56d3856fa165b1d1bae76bae4a8efaae50b2496e"
+    image: "nebraltd/hm-diag:5de702466eff76f7c7778638381d90dd295d4285"
     environment:
       - 'FIRMWARE_VERSION=2021.08.02.1_LIGHT'
       - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
