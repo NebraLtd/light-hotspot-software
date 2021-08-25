@@ -28,9 +28,10 @@ services:
 
   helium-miner:
     image: "nebraltd/hm-gatewayrs:e7e9183f3ed1b479f18a61dbabb8430ebd26d0a7"
+    expose:
+      - "1680"   
     ports:
       - "44158:44158/tcp"
-      - "1680:1680/udp"
     volumes:
       - 'miner-storage:/var/data'
       - 'miner-log:/var/log/miner'
