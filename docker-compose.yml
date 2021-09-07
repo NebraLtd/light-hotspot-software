@@ -27,7 +27,7 @@ services:
       - 'pktfwdr:/var/pktfwd'
 
   helium-miner:
-    image: "nebraltd/hm-gatewayrs:3804d063d1851e24bc8f8eae4934faad7596e3c2"
+    image: "nebraltd/hm-gatewayrs:0dd71b616ba2b5c38c3b7e3696646a2d5808460f"
     expose:
       - "1680"   
     ports:
