@@ -6,7 +6,7 @@ services:
     image: "nebraltd/hm-config:87ae525d2213120686cdeb4872825ef74f2757c3"
     environment:
       - 'FIRMWARE_VERSION=2021.09.07.0_LIGHT'
-      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
     privileged: true
     network_mode: "host"
     cap_add:
@@ -41,7 +41,7 @@ services:
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
       - 'RELEASE_BUMPER=foobar'
     labels:
       io.balena.features.dbus: '1'
@@ -50,7 +50,7 @@ services:
     image: "nebraltd/hm-diag:91885139deaf905a5ff91aee10aea9495951a3d0"
     environment:
       - 'FIRMWARE_VERSION=2021.09.07.0_LIGHT'
-      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
     volumes:
       - 'pktfwdr:/var/pktfwd'
       - 'miner-storage:/var/data'
@@ -79,6 +79,12 @@ services:
     restart: on-failure
     volumes:
       - 'pktfwdr:/var/pktfwd'
+
+  dbus-system:
+    image: "nebraltd/hm-dbus:78f036f5010a77cd368ca2d2b84d11c73ef4cc3d"
+    restart: always
+    environment:
+      DBUS_CONFIG: system.conf
       
 volumes:
   miner-storage:
