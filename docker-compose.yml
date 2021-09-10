@@ -80,7 +80,7 @@ services:
     volumes:
       - 'pktfwdr:/var/pktfwd'
 
-  dbus-session:
+  dbus-system:
     image: "nebraltd/hm-dbus:5ed28227a3949d7bce91163f052fd026f43d486c"
     restart: always
     environment:
