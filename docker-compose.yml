@@ -14,7 +14,6 @@ services:
     volumes:
       - 'miner-storage:/var/data'
     labels:
-      io.balena.features.dbus: '1'
       io.balena.features.sysfs: '1'
       io.balena.features.kernel-modules: '1'
       io.balena.features.supervisor-api: '1'
@@ -44,8 +43,6 @@ services:
     environment:
       - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
       - 'RELEASE_BUMPER=foobar'
-    labels:
-      io.balena.features.dbus: '1'
 
   diagnostics:
     image: "nebraltd/hm-diag:91885139deaf905a5ff91aee10aea9495951a3d0"
@@ -63,7 +60,6 @@ services:
       - "/dev/i2c-1:/dev/i2c-1"
     labels:
       io.balena.features.sysfs: '1'
-      io.balena.features.dbus: '1'
       io.balena.features.supervisor-api: '1'
 
   gwmfr:
