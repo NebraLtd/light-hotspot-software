@@ -4,6 +4,8 @@ services:
 
   gateway-config:
     image: "nebraltd/hm-config:87ae525d2213120686cdeb4872825ef74f2757c3"
+    depends_on:
+      - dbus-system
     environment:
       - 'FIRMWARE_VERSION=2021.09.07.0_LIGHT'
       - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system.sock'
@@ -28,6 +30,8 @@ services:
 
   helium-miner:
     image: "nebraltd/hm-miner:2987e2936dab8c9f89c5fd719417c62263a1f5e7"
+    depends_on:
+      - dbus-system
     expose:
       - "1680"
       - "4467"
@@ -48,6 +52,8 @@ services:
 
   diagnostics:
     image: "nebraltd/hm-diag:91885139deaf905a5ff91aee10aea9495951a3d0"
+    depends_on:
+      - dbus-system
     environment:
       - 'FIRMWARE_VERSION=2021.09.07.0_LIGHT'
       - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system.sock'
