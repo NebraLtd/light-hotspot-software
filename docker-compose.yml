@@ -87,7 +87,7 @@ services:
       - 'pktfwdr:/var/pktfwd'
 
   dbus-system:
-    image: "nebraltd/hm-dbus:4a76f9033d31144d2e86f98dfd7b8caf93d4fa90"
+    image: "nebraltd/hm-dbus:8043da19638eaeac662983fe8ada6a38cb516279"
     restart: always
     environment:
       - 'DBUS_CONFIG=system.conf'
