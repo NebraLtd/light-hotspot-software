@@ -88,11 +88,10 @@ services:
       - 'pktfwdr:/var/pktfwd'
 
   dbus-system:
-    image: "nebraltd/hm-dbus:d8a8721b60b4fca07f429a4823e515840203a6df"
+    image: "nebraltd/hm-dbus:c4787932ae7efb869876228cc1107e09088fc836"
     restart: always
     environment:
       - 'DBUS_CONFIG=system.conf'
-      - 'DBUS_ADDRESS=tcp:host=dbus-system,port=55884'
     labels:
       io.balena.features.dbus: '1'
       
