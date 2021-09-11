@@ -88,6 +88,7 @@ services:
     restart: always
     environment:
       - 'DBUS_CONFIG=system.conf'
+      - 'DBUS_ADDRESS=tcp:host=dbus-system,port=55884'
     expose: 
       - "55884"
 
