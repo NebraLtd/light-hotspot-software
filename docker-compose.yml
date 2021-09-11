@@ -5,10 +5,10 @@ services:
   gateway-config:
     image: "nebraltd/hm-config:f1e158dbfc62cd1394055460a9d37717b9a19f23"
     depends_on:
-      - dbus-system
+      - dbus
     environment:
       - 'FIRMWARE_VERSION=2021.09.07.0_LIGHT'
-      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus,port=55884'
     privileged: true
     network_mode: "host"
     cap_add:
@@ -30,12 +30,13 @@ services:
   helium-miner:
     image: "nebraltd/hm-miner:2987e2936dab8c9f89c5fd719417c62263a1f5e7"
     depends_on:
-      - dbus-system
+      - dbus
     expose:
       - "1680"
       - "4467"
     ports:
       - "44158:44158/tcp"
+    privileged: true
     volumes:
       - 'miner-storage:/var/data'
       - 'miner-log:/var/log/miner'
@@ -45,16 +46,16 @@ services:
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus,port=55884'
       - 'RELEASE_BUMPER=foobar'
 
   diagnostics:
     image: "nebraltd/hm-diag:7b39fa566c1b38a8e34e66f770f28daa8ca4bea9"
     depends_on:
-      - dbus-system
+      - dbus
     environment:
       - 'FIRMWARE_VERSION=2021.09.07.0_LIGHT'
-      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus,port=55884'
     volumes:
       - 'pktfwdr:/var/pktfwd'
       - 'miner-storage:/var/data'
@@ -83,12 +84,13 @@ services:
     volumes:
       - 'pktfwdr:/var/pktfwd'
 
-  dbus-system:
+  dbus:
     image: "nebraltd/hm-dbus:680e959a4469de111d2208202040b36ec456a132"
     restart: always
+    privileged: true
     environment:
       - 'DBUS_CONFIG=system.conf'
-      - 'DBUS_ADDRESS=tcp:host=dbus-system,port=55884'
+      - 'DBUS_ADDRESS=tcp:host=dbus,port=55884'
     expose: 
       - "55884"
 
