@@ -87,7 +87,7 @@ services:
       - 'pktfwdr:/var/pktfwd'
 
   dbus-system:
-    image: "nebraltd/hm-dbus:a4b9e1ffe9332fe13d6b684eb3f970ae5c05a403"
+    image: "nebraltd/hm-dbus:819f4a9736c3f32b6b2bd6cef8f2ed862ecb4bcc"
     restart: always
     environment:
       - 'DBUS_ADDRESS=unix:path=/run/dbus/system.sock'
