@@ -3,19 +3,18 @@ version: '2'
 services:
 
   gateway-config:
-    image: "nebraltd/hm-config:87ae525d2213120686cdeb4872825ef74f2757c3"
+    image: "nebraltd/hm-config:f1e158dbfc62cd1394055460a9d37717b9a19f23"
     depends_on:
       - dbus-system
     environment:
       - 'FIRMWARE_VERSION=2021.09.07.0_LIGHT'
-      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
     privileged: true
     network_mode: "host"
     cap_add:
       - NET_ADMIN
     volumes:
       - 'miner-storage:/var/data'
-      - 'dbus:/var/run/dbus'
     labels:
       io.balena.features.sysfs: '1'
       io.balena.features.kernel-modules: '1'
@@ -23,7 +22,7 @@ services:
     stop_signal: SIGINT
 
   packet-forwarder:
-    image: "nebraltd/hm-pktfwd:e2074a266c0edba2b10c5f8d5dc150047bd92432"
+    image: "nebraltd/hm-pktfwd:477eeda57ca9ebcb3909eebb8e869776a95b1668"
     privileged: true
     volumes:
       - 'pktfwdr:/var/pktfwd'
@@ -41,26 +40,24 @@ services:
       - 'miner-storage:/var/data'
       - 'miner-log:/var/log/miner'
       - 'pktfwdr:/var/pktfwd'
-      - 'dbus:/var/run/dbus'
     cap_add:
       - SYS_RAWIO
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
       - 'RELEASE_BUMPER=foobar'
 
   diagnostics:
-    image: "nebraltd/hm-diag:91885139deaf905a5ff91aee10aea9495951a3d0"
+    image: "nebraltd/hm-diag:7b39fa566c1b38a8e34e66f770f28daa8ca4bea9"
     depends_on:
       - dbus-system
     environment:
       - 'FIRMWARE_VERSION=2021.09.07.0_LIGHT'
-      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket'
+      - 'DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-system,port=55884'
     volumes:
       - 'pktfwdr:/var/pktfwd'
       - 'miner-storage:/var/data'
-      - 'dbus:/var/run/dbus'
     ports:
       - '80:5000'
     cap_add:
@@ -87,16 +84,14 @@ services:
       - 'pktfwdr:/var/pktfwd'
 
   dbus-system:
-    image: "nebraltd/hm-dbus:630314264aefe4947f32967a70f2210d767aeb91"
+    image: "nebraltd/hm-dbus:680e959a4469de111d2208202040b36ec456a132"
     restart: always
     environment:
       - 'DBUS_CONFIG=system.conf'
-      - 'DBUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket'
-    volumes:
-      - 'dbus:/var/run/dbus'
-      
+    expose: 
+      - "55884"
+
 volumes:
   miner-storage:
   miner-log:
   pktfwdr:
-  dbus:
