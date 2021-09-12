@@ -8,7 +8,7 @@ services:
       - dbus-system
     environment:
       - FIRMWARE_VERSION=2021.09.07.0_LIGHT
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system.sock
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     privileged: true
     network_mode: "host"
     cap_add:
@@ -47,7 +47,7 @@ services:
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system.sock
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
       - RELEASE_BUMPER=foobar
 
   diagnostics:
@@ -56,7 +56,7 @@ services:
       - dbus-system
     environment:
       - FIRMWARE_VERSION=2021.09.07.0_LIGHT
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system.sock
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     volumes:
       - pktfwdr:/var/pktfwd
       - miner-storage:/var/data
@@ -87,11 +87,11 @@ services:
       - pktfwdr:/var/pktfwd
 
   dbus-system:
-    image: nebraltd/hm-dbus:fff1d27b36d896280d7cac87d4f7b9b0a07ba7e5
+    image: nebraltd/hm-dbus:d88dd24728fcab1447caff1b88b2cc850d09b5e4
     restart: always
     environment:
       - DBUS_CONFIG=system.conf
-      - DBUS_ADDRESS=unix:path=/run/dbus/system.sock
+      - DBUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     volumes:
       - dbus:/run/dbus
       
