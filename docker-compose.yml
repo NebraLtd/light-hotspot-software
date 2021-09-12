@@ -16,7 +16,6 @@ services:
     volumes:
       - miner-storage:/var/data
       - dbus:/host/run/dbus
-
     labels:
       io.balena.features.sysfs: '1'
       io.balena.features.kernel-modules: '1'
