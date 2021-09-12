@@ -8,14 +8,14 @@ services:
       - dbus-system
     environment:
       - FIRMWARE_VERSION=2021.09.07.0_LIGHT
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     privileged: true
     network_mode: "host"
     cap_add:
       - NET_ADMIN
     volumes:
       - miner-storage:/var/data
-      - dbus:/var/run/dbus
+      - dbus:/run/dbus
     labels:
       io.balena.features.sysfs: '1'
       io.balena.features.kernel-modules: '1'
@@ -41,13 +41,13 @@ services:
       - miner-storage:/var/data
       - miner-log:/var/log/miner
       - pktfwdr:/var/pktfwd
-      - dbus:/var/run/dbus
+      - dbus:/run/dbus
     cap_add:
       - SYS_RAWIO
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
       - RELEASE_BUMPER=foobar
 
   diagnostics:
@@ -56,11 +56,11 @@ services:
       - dbus-system
     environment:
       - FIRMWARE_VERSION=2021.09.07.0_LIGHT
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     volumes:
       - pktfwdr:/var/pktfwd
       - miner-storage:/var/data
-      - dbus:/var/run/dbus
+      - dbus:/run/dbus
     ports:
       - "80:5000"
     cap_add:
@@ -91,9 +91,9 @@ services:
     restart: always
     environment:
       - DBUS_CONFIG=system.conf
-      - DBUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket
+      - DBUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     volumes:
-      - dbus:/var/run/dbus
+      - dbus:/run/dbus
       
 volumes:
   miner-storage:
