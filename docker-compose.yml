@@ -27,7 +27,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/hm-miner:2987e2936dab8c9f89c5fd719417c62263a1f5e7
+    image: nebraltd/hm-miner:240cfcdac57154242f3c4b458957b0bb12bffb59
     depends_on:
       - dbus-system
     expose:
