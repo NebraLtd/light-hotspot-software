@@ -18,6 +18,7 @@ services:
     stop_signal: SIGINT
     labels:
       io.balena.features.sysfs: '1'
+      io.balena.features.kernel-modules: '1'
 
   packet-forwarder:
     image: nebraltd/hm-pktfwd:477eeda57ca9ebcb3909eebb8e869776a95b1668
