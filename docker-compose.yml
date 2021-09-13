@@ -91,6 +91,7 @@ services:
       - DBUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
     volumes:
       - dbus:/host/run/dbus
+      - /etc/dbus-1/system.d:/etc/dbus-1/system.d
       
 volumes:
   miner-storage:
