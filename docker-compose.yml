@@ -8,14 +8,14 @@ services:
       - dbus-system
     environment:
       - FIRMWARE_VERSION=2021.09.07.0_LIGHT
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/test/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     privileged: true
     network_mode: "host"
     cap_add:
       - NET_ADMIN
     volumes:
       - miner-storage:/var/data
-      - dbus:/run/test/dbus
+      - dbus:/run/dbus
     labels:
       io.balena.features.sysfs: '1'
     stop_signal: SIGINT
@@ -39,13 +39,13 @@ services:
       - miner-storage:/var/data
       - miner-log:/var/log/miner
       - pktfwdr:/var/pktfwd
-      - dbus:/run/test/dbus
+      - dbus:/run/dbus
     cap_add:
       - SYS_RAWIO
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/test/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
       - RELEASE_BUMPER=foobar
 
   diagnostics:
@@ -54,11 +54,11 @@ services:
       - dbus-system
     environment:
       - FIRMWARE_VERSION=2021.09.07.0_LIGHT
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/test/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     volumes:
       - pktfwdr:/var/pktfwd
       - miner-storage:/var/data
-      - dbus:/run/test/dbus
+      - dbus:/run/dbus
     ports:
       - "80:5000"
     cap_add:
@@ -84,13 +84,13 @@ services:
       - pktfwdr:/var/pktfwd
 
   dbus-system:
-    image: nebraltd/hm-dbus:b662f1bc1f6d77533737d1c283ef571488d308dc
+    image: nebraltd/hm-dbus:a5597825d4b3cedd71d94a8310130d671a7617c5
     restart: always
     environment:
       - DBUS_CONFIG=system.conf
-      - DBUS_ADDRESS=unix:path=/run/test/dbus/system_bus_socket
+      - DBUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
     volumes:
-      - dbus:/run/test/dbus
+      - dbus:/run/dbus
       
 volumes:
   miner-storage:
