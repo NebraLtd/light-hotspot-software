@@ -8,14 +8,14 @@ services:
       - dbus-system
     environment:
       - FIRMWARE_VERSION=2021.09.07.0_LIGHT
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/test/dbus/system_bus_socket
     privileged: true
     network_mode: "host"
     cap_add:
       - NET_ADMIN
     volumes:
       - miner-storage:/var/data
-      - dbus:/run/dbus
+      - dbus:/run/test/dbus
     labels:
       io.balena.features.sysfs: '1'
     stop_signal: SIGINT
@@ -27,7 +27,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/hm-miner:240cfcdac57154242f3c4b458957b0bb12bffb59
+    image: nebraltd/hm-miner:2987e2936dab8c9f89c5fd719417c62263a1f5e7
     depends_on:
       - dbus-system
     expose:
@@ -39,13 +39,13 @@ services:
       - miner-storage:/var/data
       - miner-log:/var/log/miner
       - pktfwdr:/var/pktfwd
-      - dbus:/run/dbus
+      - dbus:/run/test/dbus
     cap_add:
       - SYS_RAWIO
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/test/dbus/system_bus_socket
       - RELEASE_BUMPER=foobar
 
   diagnostics:
@@ -54,11 +54,11 @@ services:
       - dbus-system
     environment:
       - FIRMWARE_VERSION=2021.09.07.0_LIGHT
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/test/dbus/system_bus_socket
     volumes:
       - pktfwdr:/var/pktfwd
       - miner-storage:/var/data
-      - dbus:/run/dbus
+      - dbus:/run/test/dbus
     ports:
       - "80:5000"
     cap_add:
@@ -84,13 +84,13 @@ services:
       - pktfwdr:/var/pktfwd
 
   dbus-system:
-    image: nebraltd/hm-dbus:21201cc6e65534673a9f2224c5c55891d054861c
+    image: nebraltd/hm-dbus:b662f1bc1f6d77533737d1c283ef571488d308dc
     restart: always
     environment:
       - DBUS_CONFIG=system.conf
-      - DBUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+      - DBUS_ADDRESS=unix:path=/run/test/dbus/system_bus_socket
     volumes:
-      - dbus:/run/dbus
+      - dbus:/run/test/dbus
       
 volumes:
   miner-storage:
