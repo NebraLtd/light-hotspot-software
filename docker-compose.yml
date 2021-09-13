@@ -84,14 +84,13 @@ services:
       - pktfwdr:/var/pktfwd
 
   dbus-system:
-    image: nebraltd/hm-dbus:2d1eb1cc7ae5b2bb6ef3961bf8cc0c4ec1260fdf
+    image: nebraltd/hm-dbus:f19bef21dd82d6bb381b937192e83dfe3f852962
     restart: always
     environment:
       - DBUS_CONFIG=system.conf
       - DBUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
     volumes:
       - dbus:/host/run/dbus
-      - /etc/dbus-1/system.d:/etc/dbus-1/system.d
       
 volumes:
   miner-storage:
