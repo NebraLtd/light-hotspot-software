@@ -5,7 +5,7 @@ services:
   gateway-config:
     image: nebraltd/hm-config:f1e158dbfc62cd1394055460a9d37717b9a19f23
     environment:
-      - FIRMWARE_VERSION=2021.09.07.0_LIGHT
+      - FIRMWARE_VERSION=2021.09.09.0
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
     privileged: true
     network_mode: "host"
@@ -52,7 +52,7 @@ services:
     depends_on:
       - dbus-system
     environment:
-      - FIRMWARE_VERSION=2021.09.07.0_LIGHT
+      - FIRMWARE_VERSION=2021.09.09.0
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
     volumes:
       - pktfwdr:/var/pktfwd
@@ -83,7 +83,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   dbus-system:
-    image: nebraltd/hm-dbus:31f917e602475eeab05d7e1d71b17aec543b7be2
+    image: nebraltd/hm-dbus:790d672d95a5cec9a77ad00cabc38368f8d49364
     restart: always
     environment:
       - DBUS_CONFIG=system.conf
