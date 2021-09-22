@@ -3,17 +3,19 @@ version: '2'
 services:
 
   gateway-config:
-    image: nebraltd/hm-config:08d6731a653a14faceb2c052aaac31bef96beccf
+    image: nebraltd/hm-config:15ce690e4444c3c2ce2baaf7e17803fe70fe7412
+    depends_on:
+      - dbus-session
     environment:
-      - FIRMWARE_VERSION=2021.09.09.0
+      - FIRMWARE_VERSION=2021.09.16.1
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+      - DBUS_SESSION_BUS_ADDRESS=tcp:host=localhost,port=55884
     privileged: true
     network_mode: "host"
     cap_add:
       - NET_ADMIN
     volumes:
       - miner-storage:/var/data
-      - dbus:/host/run/dbus
     labels:
       io.balena.features.sysfs: '1'
       io.balena.features.kernel-modules: '1'
@@ -27,9 +29,9 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/hm-miner:5844781334e3708e8950dcb48ffe54e57135b0c9
+    image: nebraltd/hm-miner:0c2204b7cb0738944c765d1b20b599d767587c5d
     depends_on:
-      - dbus-system
+      - dbus-session
     expose:
       - "1680"
       - "4467"
@@ -39,26 +41,24 @@ services:
       - miner-storage:/var/data
       - miner-log:/var/log/miner
       - pktfwdr:/var/pktfwd
-      - dbus:/host/run/dbus
     cap_add:
       - SYS_RAWIO
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+      - DBUS_SESSION_BUS_ADDRESS=tcp:host=dbus-session,port=55884
       - RELEASE_BUMPER=foobar
 
   diagnostics:
-    image: nebraltd/hm-diag:7b39fa566c1b38a8e34e66f770f28daa8ca4bea9
+    image: nebraltd/hm-diag:369b7a025d9e7bb8374d3c241c05c4a5676ee0da
     depends_on:
-      - dbus-system
+      - dbus-session
     environment:
-      - FIRMWARE_VERSION=2021.09.09.0
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+      - FIRMWARE_VERSION=2021.09.16.1
+      - DBUS_SESSION_BUS_ADDRESS=tcp:host=dbus-session,port=55884
     volumes:
       - pktfwdr:/var/pktfwd
       - miner-storage:/var/data
-      - dbus:/host/run/dbus
     ports:
       - "80:5000"
     cap_add:
@@ -83,17 +83,13 @@ services:
     volumes:
       - pktfwdr:/var/pktfwd
 
-  dbus-system:
-    image: nebraltd/hm-dbus:e1570b6f575cd31ff76aef2a93e6c3de9db1f9ec
+  dbus-session:
+    image: balenablocks/dbus:rpi-0.0.2
     restart: always
     environment:
-      - DBUS_CONFIG=system.conf
-      - DBUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
-    volumes:
-      - dbus:/host/run/dbus
+      - DBUS_CONFIG=session.conf
       
 volumes:
   miner-storage:
   miner-log:
   pktfwdr:
-  dbus:
