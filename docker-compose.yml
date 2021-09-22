@@ -46,7 +46,7 @@ services:
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     environment:
-      - DBUS_SESSION_BUS_ADDRESS=tcp:host=dbus-session,port=55884
+      - DBUS_SYSTEM_BUS_ADDRESS=tcp:host=dbus-session,port=55884
       - RELEASE_BUMPER=foobar
 
   diagnostics:
