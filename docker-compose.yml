@@ -86,8 +86,8 @@ services:
   dbus-session:
     image: balenablocks/dbus:rpi-0.0.2
     restart: always
-    expose:
-      - "55884"
+    ports:
+      - "55884:55884"
     environment:
       - DBUS_CONFIG=session.conf
       
