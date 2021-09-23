@@ -50,7 +50,7 @@ services:
       - RELEASE_BUMPER=foobar
 
   diagnostics:
-    image: nebraltd/hm-diag:93363e4ad0ad0042043c7306eb0dc4c5fa5dda08
+    image: nebraltd/hm-diag:b1b9eb24903f9b2e101f85894599f2a849f36c6a
     depends_on:
       - dbus-session
     environment:
