@@ -86,7 +86,9 @@ services:
   dbus-session:
     image: balenablocks/dbus:rpi-0.0.2
     restart: always
-      
+    ports:
+      - "55884:55884"
+
 volumes:
   miner-storage:
   miner-log:
