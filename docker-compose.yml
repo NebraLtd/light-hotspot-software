@@ -3,7 +3,7 @@ version: '2'
 services:
 
   gateway-config:
-    image: nebraltd/hm-config:15ce690e4444c3c2ce2baaf7e17803fe70fe7412
+    image: nebraltd/hm-config:0e0a9f00c307a80be6782c4376be70f16fa39c36
     depends_on:
       - dbus-session
     environment:
@@ -29,7 +29,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/hm-miner:0c2204b7cb0738944c765d1b20b599d767587c5d
+    image: nebraltd/hm-miner:6077a01d35a6cf3ed6ee740f6e927b66eccb4d42
     depends_on:
       - dbus-session
     expose:
@@ -50,7 +50,7 @@ services:
       - RELEASE_BUMPER=foobar
 
   diagnostics:
-    image: nebraltd/hm-diag:369b7a025d9e7bb8374d3c241c05c4a5676ee0da
+    image: nebraltd/hm-diag:b49f821d5202c24a9428f6f7831cb6380db3df48
     depends_on:
       - dbus-session
     environment:
