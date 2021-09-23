@@ -29,7 +29,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/hm-miner:6077a01d35a6cf3ed6ee740f6e927b66eccb4d42
+    image: nebraltd/hm-miner:c5b10b2d63929a5448c8f7606826b6a3665c1dd3
     depends_on:
       - dbus-session
     expose:
@@ -50,7 +50,7 @@ services:
       - RELEASE_BUMPER=foobar
 
   diagnostics:
-    image: nebraltd/hm-diag:b49f821d5202c24a9428f6f7831cb6380db3df48
+    image: nebraltd/hm-diag:aef417a7ae321d0423960f1ac9a50223bc77164d
     depends_on:
       - dbus-session
     environment:
