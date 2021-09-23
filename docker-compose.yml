@@ -86,6 +86,7 @@ services:
   dbus-session:
     image: balenablocks/dbus:rpi-0.0.2
     restart: always
+    privileged: true
     ports:
       - "55884:55884"
     environment:
