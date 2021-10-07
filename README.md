@@ -89,4 +89,4 @@ Full Details of the Helium light hotspot roadmap can be found on the [Helium doc
 
 The Nebra Light Hotspot Software has been written to support multiple variants of hardware, both to be compatible with all of Nebra's hotspots but also some alternatives & DIY solutions.
 
-The file and information of multiple hardware support can be found on our [hardware definitions repo](https://github.com/NebraLtd/helium-hardware-definitions).
+The file and information of multiple hardware support can be found in the `hardware_definitions.py` file in our [hm-pyhelper repo](https://github.com/NebraLtd/hm-pyhelper).
