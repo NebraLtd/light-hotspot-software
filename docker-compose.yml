@@ -32,7 +32,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/gatewayrs:e0fb1a5
+    image: nebraltd/hm-gatewayrs:e0fb1a5
     depends_on:
       - dbus-session
       - diagnostics
