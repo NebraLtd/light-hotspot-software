@@ -36,7 +36,7 @@ services:
       - FIRMWARE_VERSION=v1.0.0-alpha.21
 
   helium-miner:
-    image: nebraltd/hm-gatewayrs:2154d34
+    image: nebraltd/hm-gatewayrs:d324ef4
 #    depends_on:
 #      - dbus-session
 #    expose:
