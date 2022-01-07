@@ -59,7 +59,7 @@ services:
       - RELEASE_BUMPER=foobar
       - FIRMWARE_VERSION=v1.0.0-alpha.21
 
-diagnostics:
+  diagnostics:
     image: nebraltd/hm-diag:6f323fe
     environment:
       - FIRMWARE_VERSION=v1.0.0-alpha.21
