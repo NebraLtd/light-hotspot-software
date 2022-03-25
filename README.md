@@ -1,5 +1,7 @@
 # Nebra Light Helium Hotspot Software
 
+## Please note this repository has been archived and the functionality has been moved over to our main [helium-miner-software repo](https://github.com/NebraLtd/helium-miner-software) in the [light-hotspot branch](https://github.com/NebraLtd/helium-miner-software/tree/light-hotspot).
+
 This repository includes the main [docker-compose.yml](https://github.com/NebraLtd/light-hotspot-software/blob/master/docker-compose.yml) file that powers the Nebra light hotspots as well as a variety of other hardware versions (see the [hardware support](#hardware-support) section below for more details).
 
 The `docker-compose.yml` file is pushed to [Balena](https://www.balena.io/) (using GitHub Actions), which in turn pulls down the various Docker images outlined below.
